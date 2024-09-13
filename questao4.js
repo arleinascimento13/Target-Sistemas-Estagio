@@ -1,3 +1,9 @@
+/*
+1. Calcula o total de faturamento.
+2. Calcula o percentual de faturamento de cada estado em relação ao total.
+*/
+
+// Dados de faturamento por estado
 const faturamento = [
   { estado: "SP", valor: 67836.43 },
   { estado: "RJ", valor: 36678.66 },
@@ -6,13 +12,15 @@ const faturamento = [
   { estado: "Outros", valor: 19849.53 },
 ];
 
-faturamentoTotal = faturamento.reduce((total, item) => {
+// Calcula o total de faturamento somando os valores
+const faturamentoTotal = faturamento.reduce((total, item) => {
   return (total += item.valor);
 }, 0);
 
-calculoPercentual = faturamento.map((item) => {
-  let percentual = (item.valor / faturamentoTotal) * 100;
-  return { ...item, valor: `${percentual.toFixed(1)}%` };
+// Calcula o percentual de cada estado em relação ao total
+const calculoPercentual = faturamento.map((item) => {
+  let percentual = (item.valor / faturamentoTotal) * 100; // Calcula o percentual
+  return { ...item, valor: `${percentual.toFixed(1)}%` }; // Adiciona o percentual formatado
 });
 
 console.log(calculoPercentual);
